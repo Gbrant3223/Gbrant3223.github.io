@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albert Einstein</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Albert Einstein</h1>
+        <p>Theoretical Physicist • Nobel Prize Winner</p>
+    </header>
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-image">
+                <img src="images/einsteinimage.jpg"
+                     alt="Albert Einstein sticking out his tongue">
+            </div>
+
+            <div class="hero-text">
+                <h2>About Me</h2>
+
+                <p>
+                    Welcome to my personal website. Here you can explore
+                    my publications, discoveries, and contributions to science.
+                </p>
+
+                <blockquote>
+                    "Imagination is more important than knowledge."
+                </blockquote>
+            </div>
+
+        </section>
+
+        <section class="papers-section">
+
+            <h2>Books & Publications</h2>
+
+            <div id="papers-container" class="papers-grid">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© Albert Einstein Website</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+const books = [
+{
+    id:1,
+    title:"Modified-Book-25 ---The Universe and Dr. Einstein",
+    year:2005,
+    published:true
+},
+{
+    id:2,
+    title:"Book #2 ---- Einstein on politics",
+    year:2013,
+    published:true
+},
+{
+    id:3,
+    title:"Book #3 ---- Einstein versus the physical review",
+    year:2005,
+    published:false
+},
+{
+    id:4,
+    title:"Book #4 --- Einstein on peace",
+    year:2017,
+    published:true
+},
+{
+    id:6,
+    title:"Book #6 --- Book of Knowledge-2025-Oct-25",
+    year:2017,
+    published:true
+}
+];
+
+const container = document.getElementById("papers-container");
+
+books.forEach(book => {
+
+    const card = document.createElement("div");
+    card.classList.add("paper-card");
+
+    card.innerHTML = `
+        <div class="paper-icon">📄</div>
+
+        <div class="paper-title">
+            ${book.title}
+        </div>
+
+        <div class="paper-year">
+            Year: ${book.year}
+        </div>
+
+        <div class="${book.published ? 'published' : 'unpublished'}">
+            ${book.published ? 'Published' : 'Unpublished'}
+        </div>
+    `;
+
+    container.appendChild(card);
+});
+/* ---------- RESET ---------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ---------- BODY ---------- */
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f6f7;
+    color:#333;
+    line-height:1.7;
+}
+
+/* ---------- HEADER ---------- */
+
+header{
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:1.5rem;
+}
+
+header h1{
+    font-size:2rem;
+}
+
+header p{
+    margin-top:.5rem;
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:2rem 1rem;
+    gap:2rem;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:300px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.hero-text{
+    text-align:center;
+    max-width:600px;
+}
+
+.hero-text h2{
+    margin-bottom:1rem;
+    color:#2c3e50;
+}
+
+.hero-text p{
+    font-size:1.1rem;
+}
+
+blockquote{
+    margin-top:1rem;
+    font-style:italic;
+    color:#555;
+}
+
+/* ---------- PAPERS ---------- */
+
+.papers-section{
+    padding:2rem 1rem;
+}
+
+.papers-section h2{
+    text-align:center;
+    margin-bottom:2rem;
+    color:#2c3e50;
+}
+
+.papers-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1rem;
+}
+
+.paper-card{
+    background:white;
+    padding:1.5rem;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.paper-card:hover{
+    transform:translateY(-5px);
+}
+
+.paper-icon{
+    font-size:2rem;
+    margin-bottom:.5rem;
+}
+
+.paper-title{
+    font-weight:bold;
+    margin-bottom:.5rem;
+}
+
+.published{
+    color:green;
+}
+
+.unpublished{
+    color:red;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:1rem;
+}
+
+/* ---------- TABLET ---------- */
+
+@media (min-width:768px){
+
+    .hero{
+        flex-direction:row;
+        justify-content:center;
+        text-align:left;
+        max-width:1200px;
+        margin:auto;
+    }
+
+    .hero-text{
+        text-align:left;
+    }
+
+    .papers-grid{
+        grid-template-columns:
+        repeat(2, 1fr);
+    }
+}
+
+/* ---------- LAPTOP / DESKTOP ---------- */
+
+@media (min-width:1024px){
+
+    .papers-grid{
+        grid-template-columns:
+        repeat(3, 1fr);
+    }
+
+    header h1{
+        font-size:3rem;
+    }
+
+    .hero-image img{
+        max-width:450px;
+    }
+}
